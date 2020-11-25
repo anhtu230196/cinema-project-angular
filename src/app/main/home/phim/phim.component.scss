@@ -1,0 +1,34 @@
+.dsPhim {
+    padding-top: 8px;
+    .dsPhim__title {
+      padding-bottom: 5px;
+      .active {
+        border-bottom: 2px solid #fb422691;
+        font-weight: bold;
+        font-size: 25px;
+      }
+      &:hover{
+          cursor: pointer;
+
+      }
+    }
+    .dsPhim__content {
+        width: 90%;
+        max-width: 1160px;
+        margin: 0 auto;
+        // @include for-size(lg) {
+        // max-width: 760px;
+        // }
+        // @include for-size(sm) {
+        // max-width: 560px;
+        // }
+        // @include for-size(xs) {
+        // max-width: 85%;
+        // }
+        // @include for-size(phone-sm) {
+        // max-width: 250px;
+        // }
+   
+
+  }
+}

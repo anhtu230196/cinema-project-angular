@@ -1,0 +1,29 @@
+<div class="dsPhim">
+  <div class="dsPhim__title text-center">
+    <h3
+      class="d-inline mr-4 px-1"
+      [ngClass]="{ active: isActive }"
+      (click)="doiPhim(true)"
+    >
+      ĐANG CHIẾU
+    </h3>
+    <h3
+      class="d-inline mr-4 px-1"
+      [ngClass]="{ active: !isActive }"
+      (click)="doiPhim(false)"
+    >
+      SẮP CHIẾU
+    </h3>
+  </div>
+
+  <div class="dsPhim__content">
+    <div *ngIf="isActive; else phimSC" class="content_DC pt-3">
+      <app-phim-dang-chieu [phimDC]="dsPhim"></app-phim-dang-chieu>
+    </div>
+    <ng-template #phimSC>
+      <div class="content_SC">
+        <app-phim-sap-chieu [phimSC]="dsPhim.reverse()"></app-phim-sap-chieu>
+      </div>
+    </ng-template>
+  </div>
+</div>
