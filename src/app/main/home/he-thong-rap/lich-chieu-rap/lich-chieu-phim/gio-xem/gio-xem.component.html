@@ -1,1 +1,8 @@
-<p>gio-xem works!</p>
+<div
+  *ngFor="let gioXem of mangGioXem.slice(0, 8)"
+  (click)="datVe(gioXem.maLichChieu)"
+  class="suatChieu__content"
+>
+  <span>{{ gioXem.ngayChieuGioChieu | date: "HH:mm" }}</span>
+  <span> - {{ gioXem.ngayChieuGioChieu | date: "dd/MM" }} </span>
+</div>

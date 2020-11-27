@@ -16,7 +16,7 @@ export class LichChieuPhimComponent implements OnInit, OnChanges {
   @Input() maRap: string;
   @Input() maCumRap: string;
   constructor(private cinemaService: CinemaService) {}
-  phimChieu: boolean = true;
+  phimChieu: boolean; // Dùng để xét xem có phim theo rạp không
   lichChieuPhim: [] = [];
   suatChieu: [] = [];
   MaPhim: number;
@@ -42,7 +42,7 @@ export class LichChieuPhimComponent implements OnInit, OnChanges {
       console.log("res", res);
       let dsRap: any[] = res[0].lstCumRap;
       console.log("dsRap:", dsRap);
-      let rap = dsRap.filter((rap) => rap.maCumRap === this.maCumRap);
+      let rap = dsRap.filter((rap) => rap.maCumRap === this.maCumRap); // filter lại thằng rạp đc chọn
       console.log("sau khi filter", rap);
       if (rap.length > 0) {
         this.lichChieuPhim = rap[0].danhSachPhim;

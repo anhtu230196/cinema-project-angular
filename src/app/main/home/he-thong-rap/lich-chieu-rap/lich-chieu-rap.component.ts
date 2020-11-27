@@ -13,7 +13,7 @@ import { CinemaService } from "src/app/core/services/cinema.service";
   styleUrls: ["./lich-chieu-rap.component.scss"],
 })
 export class LichChieuRapComponent implements OnInit, OnChanges {
-  @Input() maRap;
+  @Input() maHeThong;
   dsRap: [] = [];
   indexActive: number = 0;
   maCumRap: string = "";
@@ -39,8 +39,9 @@ export class LichChieuRapComponent implements OnInit, OnChanges {
   }
 
   layThongTinCumRap() {
-    this.cinemaService.layThongTinCumRap(this.maRap).subscribe(
+    this.cinemaService.layThongTinCumRap(this.maHeThong).subscribe(
       (res) => {
+        console.log("danh sách rạp: ", res);
         this.dsRap = res;
         this.maCumRap = res[0].maCumRap;
       },

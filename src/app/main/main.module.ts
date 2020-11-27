@@ -17,9 +17,10 @@ import { PhimItemComponent } from "./home/phim/phim-item/phim-item.component";
 import { ModalComponent } from "./home/modal/modal.component";
 import { TrailerModalComponent } from "./home/modal/trailer-modal/trailer-modal.component";
 import { DanhGiaComponent } from "./home/phim/phim-item/danh-gia/danh-gia.component";
-import { LichChieuRapComponent } from './home/he-thong-rap/lich-chieu-rap/lich-chieu-rap.component';
-import { LichChieuPhimComponent } from './home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/lich-chieu-phim.component';
-import { GioXemComponent } from './home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/gio-xem/gio-xem.component';
+import { LichChieuRapComponent } from "./home/he-thong-rap/lich-chieu-rap/lich-chieu-rap.component";
+import { LichChieuPhimComponent } from "./home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/lich-chieu-phim.component";
+import { GioXemComponent } from "./home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/gio-xem/gio-xem.component";
+import { TrangDatVeComponent } from "./trang-dat-ve/trang-dat-ve.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     children: [
       { path: "", component: HomeComponent },
       { path: "movie/:id", component: MovieDetailComponent },
+      { path: "datve/:maLichChieu", component: TrangDatVeComponent },
     ],
   },
 ];
@@ -51,6 +53,7 @@ const routes: Routes = [
     LichChieuRapComponent,
     LichChieuPhimComponent,
     GioXemComponent,
+    TrangDatVeComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthenticationService } from "../../../../../../core/services/authentication.service";
 
 @Component({
   selector: "app-gio-xem",
@@ -7,7 +9,20 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class GioXemComponent implements OnInit {
   @Input() mangGioXem;
-  constructor() {}
+  currentUser: any = {};
+  constructor(private auth: AuthenticationService, private router: Router) {}
 
-  ngOnInit(): void {}
+  datVe(value) {
+    if (this.currentUser.taiKhoan) {
+      this.router.navigate([`/datve/${value}`]);
+    } else {
+      alert("Vui long đăng nhập");
+    }
+  }
+
+  ngOnInit(): void {
+    this.auth.currentUser.subscribe((res) => {
+      this.currentUser = res;
+    });
+  }
 }

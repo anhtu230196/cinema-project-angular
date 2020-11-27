@@ -28,7 +28,7 @@
           [id]="thongTinRap.maCumRap"
         >
           <app-lich-chieu-phim
-            [maRap]="maRap"
+            [maRap]="maHeThong"
             [maCumRap]="thongTinRap.maCumRap"
           >
           </app-lich-chieu-phim>
@@ -43,7 +43,7 @@
   >
     <app-lich-chieu-phim
       *ngIf="maCumRap"
-      [maRap]="maRap"
+      [maRap]="maHeThong"
       [maCumRap]="maCumRap"
     ></app-lich-chieu-phim>
   </div>

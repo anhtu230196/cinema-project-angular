@@ -11,7 +11,7 @@ export class MoviesService {
 
   getMovieList(): Observable<Movie[]> {
     const url =
-      "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
+      "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP05";
 
     return this.http.get<Movie[]>(url);
   }

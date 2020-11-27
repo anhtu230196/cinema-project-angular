@@ -7,7 +7,7 @@ import { CinemaService } from "../../../core/services/cinema.service";
 })
 export class HeThongRapComponent implements OnInit, OnChanges {
   dsHeThongRap: [] = [];
-  maRap: string = "";
+  maHeThong: string = "";
   currentWindowWidth: number;
   @HostListener("window:resize")
   onResize() {
@@ -19,18 +19,20 @@ export class HeThongRapComponent implements OnInit, OnChanges {
   }
   constructor(private cinemaService: CinemaService) {}
 
-  layMaRap(value) {
-    this.maRap = value;
+  layMaHeThong(maHeThongChon) {
+    // Chọn lại hệ thống rạp để truyền lại sang component lich-chieu-rap
+    this.maHeThong = maHeThongChon;
   }
 
+  //ngOnInIt chỉ chạy 1 lần sau khi khởi động component
   ngOnInit(): void {
     this.currentWindowWidth = window.innerWidth;
     if (this.currentWindowWidth <= 420) {
-      this.maRap = null;
+      this.maHeThong = null; // Nếu màn hình nhỏ thì ko sét hệ thống rạp ban đầu
     }
     this.cinemaService.layThongTinHeThongRap().subscribe(
       (res) => {
-        this.maRap = res[0].maHeThongRap;
+        this.maHeThong = res[0].maHeThongRap; // Sét hệ thống rạp ban đầu khi trình duyệt khởi động
         this.dsHeThongRap = res;
       },
       (err) => {
