@@ -17,4 +17,9 @@ export class CinemaService {
     let url = `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`;
     return this.http.get<any>(url);
   }
+
+  layLichChieuTheoRap(maRap): Observable<any> {
+    let url = `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maRap}&maNhom=GP01`;
+    return this.http.get<any>(url);
+  }
 }

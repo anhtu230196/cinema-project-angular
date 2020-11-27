@@ -9,7 +9,7 @@
         *ngFor="let heThong of dsHeThongRap; let index = index"
         [attr.data-id]="index"
         [ngClass]="{ active: index == indexActive }"
-        (click)="layHeThongRap(heThong.maHeThongRap); changeIndex(index)"
+        (click)="layMaRap(heThong.maHeThongRap); changeIndex(index)"
       >
         <div class="bg-item">
           <div

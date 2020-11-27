@@ -1,11 +1,11 @@
-import { Component, HostListener, OnInit } from "@angular/core";
+import { Component, HostListener, OnChanges, OnInit } from "@angular/core";
 import { CinemaService } from "../../../core/services/cinema.service";
 @Component({
   selector: "app-he-thong-rap",
   templateUrl: "./he-thong-rap.component.html",
   styleUrls: ["./he-thong-rap.component.scss"],
 })
-export class HeThongRapComponent implements OnInit {
+export class HeThongRapComponent implements OnInit, OnChanges {
   dsHeThongRap: [] = [];
   maRap: string = "";
   currentWindowWidth: number;
@@ -19,10 +19,17 @@ export class HeThongRapComponent implements OnInit {
   }
   constructor(private cinemaService: CinemaService) {}
 
-  layHeThongRap() {
+  layMaRap(value) {
+    this.maRap = value;
+  }
+
+  ngOnInit(): void {
+    this.currentWindowWidth = window.innerWidth;
+    if (this.currentWindowWidth <= 420) {
+      this.maRap = null;
+    }
     this.cinemaService.layThongTinHeThongRap().subscribe(
       (res) => {
-        console.log(res);
         this.maRap = res[0].maHeThongRap;
         this.dsHeThongRap = res;
       },
@@ -31,10 +38,6 @@ export class HeThongRapComponent implements OnInit {
       }
     );
   }
-  ngOnInit(): void {
-    this.layHeThongRap();
-    if (this.currentWindowWidth <= 420) {
-      this.maRap = null;
-    }
-  }
+
+  ngOnChanges(): void {}
 }

@@ -20,7 +20,7 @@ export class LichChieuRapComponent implements OnInit, OnChanges {
   isShowCumRap: boolean = false;
   currentWindowWidth: number;
   @HostListener("window: resize")
-  onSize() {
+  onReSize() {
     this.currentWindowWidth = window.innerWidth;
   }
 
@@ -38,11 +38,7 @@ export class LichChieuRapComponent implements OnInit, OnChanges {
     this.indexActive = index;
   }
 
-  ngOnInit(): void {
-    this.currentWindowWidth = window.innerWidth;
-  }
-
-  ngOnChanges(): void {
+  layThongTinCumRap() {
     this.cinemaService.layThongTinCumRap(this.maRap).subscribe(
       (res) => {
         this.dsRap = res;
@@ -50,6 +46,13 @@ export class LichChieuRapComponent implements OnInit, OnChanges {
       },
       (err) => {}
     );
-    this.indexActive = 0;
+  }
+
+  ngOnInit(): void {
+    this.currentWindowWidth = window.innerWidth;
+  }
+
+  ngOnChanges(): void {
+    this.layThongTinCumRap();
   }
 }

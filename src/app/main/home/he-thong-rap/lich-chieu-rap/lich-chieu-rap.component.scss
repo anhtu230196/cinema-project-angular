@@ -1,3 +1,48 @@
 .lich-chieu{
-    padding-top: 20px;
+    padding-top: 30px;
+    width: 90%;
+    margin: 0 auto;
+    
+    .lich-chieu__content{
+        .lich-chieu__rap{
+            height: 620px;
+            overflow: auto;
+            li.lich-chieu__item{
+                cursor: pointer;
+        list-style: none;
+        transition: all 0.5s;
+        opacity: 0.5;
+        border-bottom: 1px solid rgba(148, 148, 148, 0.418);
+        &.active{
+            opacity: 1 !important;
+            transition: all 0.5s;
+        }
+
+        img{
+            width: 15%;
+            height: 100%;
+        }
+        .item__title{
+            text-align: left;
+            margin-top: 7px;
+            span{
+            }
+            .tenRap{
+                color: #ff55a5;
+                font-weight: 500;
+            }
+            span{
+                font-weight: bold;
+            }
+            .dsRap-diaChi{
+
+            }
+        }
+
+
+
+            }
+        }
+    }
+    
 }
