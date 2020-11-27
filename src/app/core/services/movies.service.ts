@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Movie } from '../models/movies';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Movie } from "../models/movies";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class MoviesService {
   constructor(private http: HttpClient) {}
 
   getMovieList(): Observable<Movie[]> {
     const url =
-      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01';
+      "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01";
 
     return this.http.get<Movie[]>(url);
   }
@@ -22,19 +22,19 @@ export class MoviesService {
     const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim`;
 
     let params = new HttpParams();
-    params = params.append('maPhim', id.toString());
+    params = params.append("maPhim", id.toString());
 
     return this.http.get<any>(url, { params });
   }
 
   getMovieListPaging(currentPage: number, pageSize: number) {
     const url =
-      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang';
+      "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang";
 
     let params = new HttpParams();
     params = params
-      .append('soTrang', currentPage.toString())
-      .append('soPhanTuTrenTrang', pageSize.toString());
+      .append("soTrang", currentPage.toString())
+      .append("soPhanTuTrenTrang", pageSize.toString());
 
     return this.http.get(url, { params });
   }

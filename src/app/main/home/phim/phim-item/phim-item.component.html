@@ -1,1 +1,26 @@
-<p>phim-item works!</p>
+<div class="card card--big">
+  <div class="card__cover">
+    <img [src]="phim.hinhAnh" />
+    <a class="card__play">
+      <i
+        (click)="getTrailer(phim.trailer)"
+        class="fa fa-play"
+        aria-hidden="true"
+      ></i>
+    </a>
+  </div>
+  <div class="content">
+    <div class="card__content">
+      <h3 class="card__title">
+        <a>{{ phim.tenPhim }}</a>
+      </h3>
+
+      <span class="card__rate"
+        ><i class="fa fa-star" aria-hidden="true"></i>{{ phim.danhGia / 2 }}
+      </span>
+    </div>
+  </div>
+  <div class="button__muave">
+    <button routerLink="/chitiet/{{ phim.maPhim }}">Mua vé</button>
+  </div>
+</div>

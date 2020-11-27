@@ -1,0 +1,35 @@
+.rap{
+    width: 100%;
+    padding-top: 30px;
+    .rap__title{
+        text-align: center;
+        color: #ff55a5;;
+    }
+    .rap__content{
+        padding-top: 20px;
+        text-align: center; 
+       .rap__logo{
+            width: 70%;
+            margin: 0 auto !important;
+            .rap__item{
+                padding: 10px 0;
+                list-style: none;
+                opacity: 0.5;
+                transition: all 0.3s;
+                p,i{
+                    display: none;
+                }
+                &.active{
+                    opacity: 1;
+                }
+                &:hover{
+                    opacity: 1;
+                }
+                img{
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        }
+    }
+}

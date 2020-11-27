@@ -2,14 +2,14 @@
   <div class="dsPhim__title text-center">
     <h3
       class="d-inline mr-4 px-1"
-      [ngClass]="{ active: isActive }"
+      [ngClass]="{ active: isActive, disabled: !isActive }"
       (click)="doiPhim(true)"
     >
       ĐANG CHIẾU
     </h3>
     <h3
       class="d-inline mr-4 px-1"
-      [ngClass]="{ active: !isActive }"
+      [ngClass]="{ active: !isActive, disabled: isActive }"
       (click)="doiPhim(false)"
     >
       SẮP CHIẾU

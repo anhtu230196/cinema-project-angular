@@ -2,11 +2,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-
+import { PipeModule } from "./pipe/pipe.module";
 import { AppComponent } from "./app.component";
 // Có nhiều loại module
 // Module do angular cung cấp: FormsModule, RouterModule, HttpModule
 // Module do dev tự định nghĩa
+
+import { SlickCarouselModule } from "ngx-slick-carousel";
 
 import { RouterModule, Routes } from "@angular/router";
 
@@ -33,6 +35,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
+    SlickCarouselModule,
+    PipeModule,
   ],
   // Nơi gắn các services vào
   providers: [],

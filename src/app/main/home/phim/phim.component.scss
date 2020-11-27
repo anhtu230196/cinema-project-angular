@@ -1,14 +1,23 @@
 .dsPhim {
     padding-top: 8px;
     .dsPhim__title {
+      color: white;
       padding-bottom: 5px;
       .active {
-        border-bottom: 2px solid #fb422691;
+        border-bottom: 2px solid #ff55a5;
         font-weight: bold;
         font-size: 25px;
+        color: #ff55a5
       }
-      &:hover{
+      .disabled{
+        color: hsla(0,0%,100%,.6);
           cursor: pointer;
+          transition: 0.4s;
+          font-size: 20px;
+          &:hover{
+            color: white;
+            font-size: 25px;
+          }
 
       }
     }

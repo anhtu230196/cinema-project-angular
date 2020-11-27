@@ -1,1 +1,22 @@
-<p>phim-sap-chieu works!</p>
+<div class="mx-auto">
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+  >
+    <div ngxSlickItem *ngFor="let phimItem of phimSC" class="slide mx-2 px-2">
+      <app-phim-item
+        (transTrailer)="showTrailer($event)"
+        [phim]="phimItem"
+      ></app-phim-item>
+    </div>
+  </ngx-slick-carousel>
+</div>
+
+<!-- Trailer -->
+<div *ngIf="trailer">
+  <app-trailer-modal
+    (click)="closeModal()"
+    [trailer]="trailer"
+  ></app-trailer-modal>
+</div>
