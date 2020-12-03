@@ -1,35 +1,117 @@
 <div class="container">
   <!-- Loading -->
   <div *ngIf="loading" class="row">
-    <div class="col-sm-12 text-center">
-      Loading...
+    <div class="col-sm-12 text-center">Loading...</div>
+  </div>
+</div>
+<!-- Data -->
+<div *ngIf="chiTietPhim.ngayKhoiChieu" class="detail">
+  <div class="detail-header">
+    <div class="styleGradient"></div>
+    <img class="img-header" src="assets/img/bg-detail.jpg" alt="" />
+    <div
+      *ngIf="currentWidth <= 767"
+      class="img-header-sm"
+      [ngStyle]="{ 'background-image': 'url(' + chiTietPhim.hinhAnh + ')' }"
+    >
+      <div (click)="getTrailer()" class="play-icon">
+        <img src="assets/img/icon-play.png" alt="" />
+      </div>
+      <div class="header-title">
+        <p class="khoiChieu">{{ chiTietPhim.ngayKhoiChieu | date }}</p>
+        <div class="detail-header__title my-2 d-flex">
+          <p>{{ chiTietPhim.tenPhim }}</p>
+        </div>
+        <p class="">120 Phut - IDMb 8.5 - 2D/Digital</p>
+      </div>
+    </div>
+    <div class="detail-header__content d-flex">
+      <div class="detail-header-info" *ngIf="currentWidth > 767">
+        <div class="header-detail-img">
+          <div class="img-phim">
+            <img [src]="chiTietPhim.hinhAnh" alt="" />
+          </div>
+          <div class="img-border">
+            <img src="assets/img/border.png" alt="" />
+          </div>
+          <!-- <div class="img-hover">
+            <img src="assets/img/bghover.png" alt="" />
+          </div> -->
+          <div (click)="getTrailer()" class="play-icon">
+            <img src="assets/img/icon-play.png" alt="" />
+          </div>
+        </div>
+
+        <div class="header-title">
+          <p>{{ chiTietPhim.ngayKhoiChieu | date }}</p>
+          <div class="detail-header__title my-2 d-flex">
+            <p>{{ chiTietPhim.tenPhim }}</p>
+          </div>
+          <p class="">120 Phut - IDMb 8.5 - 2D/Digital</p>
+          <div class="header-title__button mt-3">
+            <a
+              (click)="changeDieuKien('lichChieu')"
+              class="btn my-2"
+              pageScroll
+              href="#lichChieu"
+              ><span>Mua Vé</span></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="header-circleStar ml-auto">
+        <span class="circle-danhGia">{{ chiTietPhim.danhGia / 2 }}</span>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      </div>
     </div>
   </div>
-
-  <!-- Error -->
-  <div *ngIf="error" class="row">
-    <div class="col-sm-12 text-center">
-      {{error || "Some error occurred."}}
+  <div id="lichChieu" class="detail-footer mx-auto">
+    <div class="detail-footer-title text-center">
+      <h3
+        class="d-inline"
+        (click)="changeDieuKien('lichChieu')"
+        [ngClass]="{ active: dieuKien == 'lichChieu' }"
+      >
+        Lịch Chiếu
+      </h3>
+      <h3
+        class="d-inline"
+        (click)="changeDieuKien('thongTin')"
+        [ngClass]="{ active: dieuKien == 'thongTin' }"
+      >
+        Thông Tin
+      </h3>
+      <!-- <h3
+        class="d-inline"
+        (click)="changeDieuKien('danhGia')"
+        [ngClass]="{ active: dieuKien == 'danhGia' }"
+      >
+        Đánh Giá
+      </h3> -->
     </div>
-  </div>
-
-  <!-- Data -->
-  <div *ngIf="movieDetail" class="row">
-    <div class="col-sm-6">
-      <img [src]="movieDetail.hinhAnh">
-    </div>
-    <div class="col-sm-6">
-      <h1>{{movieDetail.tenPhim}}</h1>
-      <p>{{movieDetail.moTa}}</p>
+    <div class="detail-footer__content">
+      <div *ngIf="dieuKien === 'lichChieu'">
+        <app-chi-tiet-rap
+          [chiTietRap]="chiTietPhim.heThongRapChieu"
+          [cumRapChieu]="cumRapActive"
+          [chiTietPhim]="chiTietPhim"
+        >
+        </app-chi-tiet-rap>
+      </div>
+      <div *ngIf="dieuKien === 'thongTin'">
+        <app-chi-tiet-info [phim]="chiTietPhim"> </app-chi-tiet-info>
+      </div>
+      <!-- <div *ngIf="dieuKien === 'danhGia'">
+        <app-chi-tiet-rate> </app-chi-tiet-rate>
+      </div> -->
     </div>
   </div>
 </div>
 
-
-
-
-
-
-
-
-
+<div *ngIf="trailer">
+  <app-trailer-modal
+    (click)="removeTrailer()"
+    [trailer]="trailer"
+  ></app-trailer-modal>
+</div>

@@ -1,0 +1,68 @@
+// @import "../../home/he-thong-rap/he-thong-rap.component.scss";
+@import "../../home/he-thong-rap/lich-chieu-rap/lich-chieu-rap.component.scss";
+@import "../../home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/lich-chieu-phim.component.scss";
+@import "../../home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/gio-xem/gio-xem.component.scss";
+
+.rap{
+    padding-top: 40px;
+    width: 100%;
+    margin: 0 auto;
+    
+    .rap__content{
+        .rap__logo{
+            display: flex;
+            flex-wrap: wrap;
+            .rap__item{
+                margin: 0 15px;
+                opacity: 0.5;
+                &:hover{
+                    cursor: pointer;
+                }
+                &.active{
+                    opacity: 1;
+                }
+                img{
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        }
+        .rap__lich-chieu{
+            .lich-chieu{
+                width: 100% !important;
+                .lich-chieu__content{
+                    border: none;
+                    .lich-chieu__rap{
+                        padding-right: 15px;
+                        height: 100%;
+                        .lich-chieu__item{
+                            img{
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.lich-chieu__phim{
+    padding-left: 50px;
+}
+.lich-phim__ngayXem{
+    height: 50px;
+    overflow: auto;
+    .ngay-xem-item{
+        padding: 0 50px;
+        font-size: 21px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .active{
+        color: #ff55a5;
+    }
+}
+
+
+

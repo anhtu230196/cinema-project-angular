@@ -1,0 +1,61 @@
+.ung-dung {
+    margin-top:50px;
+    background-image: url("../../../../assets/img/background.jpg");
+    background-attachment: fixed;
+    padding: 100px;
+    
+    .ung-dung__text {
+      padding-right: 16px;
+      color: whitesmoke;
+      align-self: center;
+      
+      .text-u-left{
+        color: whitesmoke;
+      font-weight: 700;
+      font-size: 35px;
+      padding: 0px 0;
+      
+      }
+      p {
+        font-size: 20px;
+        padding: 0;
+        
+      }
+      button {
+        background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+        margin: 15px 0;
+        color: white;
+        font-size: 18px;
+        transition: all 0.5s;
+        &:hover{
+          box-shadow: 0 0 20px 0 rgba(255,88,96,0.5);
+        }
+      }
+    }
+  }
+  img {
+      width: 100%;
+      height: 100%;
+  }
+  .ung-dung__dt {
+    .ung-dung__img {
+      width: 45%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      
+      img.img-dt {
+        z-index: 500;
+        overflow: hidden;
+      }
+      .ung-dung__carousel {
+        position: absolute;
+        width: 88%;
+        left: 6%;
+        top: 2%;
+        img {
+          border-radius: 7px;
+        }
+      }
+    }
+}

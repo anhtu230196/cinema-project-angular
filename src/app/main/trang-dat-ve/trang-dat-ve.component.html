@@ -1,1 +1,149 @@
-<p>trang-dat-ve works!</p>
+<div id="dat-ve">
+  <div class="trang-datVe mx-auto">
+    <div class="d-md-flex d-sm-block">
+      <div class="thongTinGhe" [ngClass]="{ 'hide-ghe': isThanhToan }">
+        <div class="dat-ve-left">
+          <app-danh-sach-ghe
+            [isWarning]="isWarning"
+            (getGhe)="datGhe($event)"
+            *ngIf="danhSachGhe"
+            [danhSachGhe]="danhSachGhe"
+          ></app-danh-sach-ghe>
+        </div>
+      </div>
+
+      <div class="thongTinPhim ml-auto" *ngIf="thongTinPhim">
+        <div class="dat-ve-right">
+          <div class="ve__info-phim d-flex col-md-12" *ngIf="isThanhToan">
+            <img [src]="thongTinPhim.hinhAnh" alt="" />
+            <div class="img-border">
+              <img src="assets/img/border.png" alt="" />
+            </div>
+            <div class="ve_info">
+              <p class="info-title">{{ thongTinPhim.tenPhim }}</p>
+              <div class="ngayChieu d-flex">
+                <p class="ngayGio">
+                  {{ thongTinPhim.gioChieu }}
+                  <span> - {{ thongTinPhim.ngayChieu }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ve__info-rap d-flex ml-auto col-md-12"
+            [ngClass]="{ rapBuoc1: !isThanhToan }"
+          >
+            <img src="assets/img/rap-demo.jpg" alt="" />
+            <div class="veRap-info">
+              <p class="info-title">{{ thongTinPhim.tenCumRap }}</p>
+              <p class="small">{{ thongTinPhim.diaChi }}</p>
+              <div class="ghe-da-dat d-xl-flex d-block">
+                {{ thongTinPhim.tenRap }} - Ghế Đang Đặt : &nbsp;
+                <div class="gheDat">
+                  <span class="pr-2 tenGhe" *ngFor="let ghe of gheDangChon">{{
+                    ghe.tenGhe
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ve__giaVe col-12">
+            <div class="row d-md-block d-flex d-lg-flex">
+              <div
+                class="col-lg-7 col-md-12 col-6 giaVe-bap"
+                *ngIf="isThanhToan"
+              >
+                <div class="row">
+                  <div class="col-12 d-flex bap-nuoc">
+                    <p class="giaVe__left">Bắp Nước:</p>
+                    <p class="giaVe__right">{{ tienCombo }}</p>
+                  </div>
+                  <div class="col-12 d-flex bap-nuoc">
+                    <p class="giaVe__left">Vé:</p>
+                    <p class="giaVe__right">{{ tienVe }}</p>
+                  </div>
+                  <div class="col-12 tongTien d-flex">
+                    <p class="giaVe__left">Tổng Tiền:</p>
+                    <p class="giaVe__right">{{ tienVe + tienCombo }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="button-ve text-center py-2"
+            *ngIf="isConfirm && isThanhToan; else buoc1"
+            (click)="datVe()"
+            data-toggle="modal"
+            data-target="#modalConfirm"
+            [ngClass]="{ active: gheDangChon[0] && !isWarning }"
+          >
+            Mua Vé
+          </div>
+          <ng-template #buoc1>
+            <div
+              class="button-ve text-center py-2"
+              (click)="datVeBuoc1()"
+              [ngClass]="{ active: gheDangChon[0] && !isWarning }"
+            >
+              Đặt ghế
+              <i *ngIf="isConfirm" class="mx-2 fa fa-spinner fa-spin"></i>
+            </div>
+          </ng-template>
+
+          <img
+            src="assets/img/comboIcon.png"
+            *ngIf="isThanhToan"
+            class="btn-combo"
+            [ngClass]="{ 'show-combo': isCombo }"
+            (click)="combo()"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div [ngClass]="{ 'show-background': isCombo }" class="background-drop"></div>
+<div class="bg-combo" [ngClass]="{ 'show-combo': isCombo }">
+  <table class="table" [ngClass]="{ 'table-phone': currentHeight <= 375 }">
+    <div class="col-12 combo-content">
+      <div (click)="closeCombo()" class="button-close">
+        <i class="fa fa-times-circle-o 2x" aria-hidden="true"></i>
+      </div>
+
+      <h1 class="combo-heading">Combo</h1>
+      <div
+        class="d-flex combo-body align-items-center py-2"
+        *ngFor="let combo of mangCombo"
+      >
+        <div class="combo-img col-3">
+          <img [src]="combo.img" alt="" />
+        </div>
+        <div class="combo-text col-5">
+          <p>{{ combo.ten }}</p>
+          <p>{{ combo.gia }}</p>
+        </div>
+        <div class="combo-sl col-4 d-flex mx-auto">
+          <div (click)="datCombo(combo.id, false)" class="minus text-center">
+            -
+          </div>
+          <span class="soLuong text-center align-self-center">{{
+            combo.soLuong
+          }}</span>
+          <div (click)="datCombo(combo.id, true)" class="plus text-center">
+            +
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="combo-line"></div>
+      <div class="combo-footer">
+        <span>Thành Tiền:</span>
+        <span>{{ tienCombo }}</span>
+      </div>
+    </div>
+  </table>
+</div>

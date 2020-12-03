@@ -34,6 +34,7 @@ export class HeThongRapComponent implements OnInit, OnChanges {
       (res) => {
         this.maHeThong = res[0].maHeThongRap; // Sét hệ thống rạp ban đầu khi trình duyệt khởi động
         this.dsHeThongRap = res;
+        console.log("dsHeThong: ", this.dsHeThongRap);
       },
       (err) => {
         console.log(err);

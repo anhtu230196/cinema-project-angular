@@ -1,6 +1,8 @@
 .lichPhim{
     cursor: pointer;
     list-style: none;
+    height: 620px;
+    overflow: auto;
     .lich-phim__content{
         img{
             width: 80px;

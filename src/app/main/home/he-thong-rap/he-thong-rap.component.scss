@@ -1,6 +1,18 @@
 .rap{
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        display: block;
+        background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+        box-shadow: 0 0 20px 0 rgba(255,88,96,0.5);
+    }
     width: 100%;
-    padding-top: 30px;
+    padding-top: 50px;
     .rap__title{
         text-align: center;
         color: #ff55a5;;

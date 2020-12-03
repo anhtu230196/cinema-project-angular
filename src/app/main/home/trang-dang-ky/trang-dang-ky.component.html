@@ -1,0 +1,143 @@
+<div class="sign section--bg" data-bg="assets/img/section.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sign__content">
+          <!-- registration form -->
+
+          <form
+            [formGroup]="formDangKy"
+            (ngSubmit)="DangKy(formDangKy.value)"
+            class="sign__form"
+          >
+            <a href="index.html" class="sign__logo">
+              <img routerLink="/" src="assets/img/logo.png" alt="" />
+            </a>
+            <div *ngIf="errors.error" class="text-danger py-2">
+              * {{ errors.error }}
+            </div>
+            <div class="sign__group">
+              <input
+                type="text"
+                class="sign__input"
+                placeholder="Tài khoản"
+                formControlName="taiKhoan"
+              />
+              <div
+                *ngIf="
+                  formDangKy.get('taiKhoan').invalid &&
+                  (formDangKy.get('taiKhoan').dirty ||
+                    formDangKy.get('taiKhoan').touched)
+                "
+                class="text-danger mt-1 small p-1 text-left"
+              >
+                <div *ngIf="formDangKy.get('taiKhoan').errors['required']">
+                  * Tài Khoản Không được bỏ trống
+                </div>
+                <div *ngIf="formDangKy.get('taiKhoan').errors['minlength']">
+                  * Tài Khoản phải lớn hơn 6 ký tự
+                </div>
+                <div *ngIf="formDangKy.get('taiKhoan').errors['pattern']">
+                  * Tài Khoản không được có khoảng trắng và ký tự đặc biệt
+                </div>
+              </div>
+            </div>
+
+            <div class="sign__group">
+              <input
+                type="password"
+                class="sign__input"
+                placeholder="Mật khẩu"
+                formControlName="matKhau"
+              />
+              <div
+                *ngIf="
+                  formDangKy.get('matKhau').invalid &&
+                  (formDangKy.get('matKhau').dirty ||
+                    formDangKy.get('matKhau').touched)
+                "
+                class="text-danger mt-1 small p-1 text-left"
+              >
+                <div *ngIf="formDangKy.get('matKhau').errors.required">
+                  * Mật Khẩu Không được bỏ trống
+                </div>
+                <div *ngIf="formDangKy.get('matKhau').errors.minlength">
+                  * Mật Khẩu phải lớn hơn 6 ký tự
+                </div>
+              </div>
+            </div>
+
+            <div class="sign__group">
+              <input
+                type="text"
+                class="sign__input"
+                placeholder="Họ tên"
+                formControlName="hoTen"
+              />
+              <div
+                *ngIf="
+                  formDangKy.get('hoTen').invalid &&
+                  (formDangKy.get('hoTen').dirty ||
+                    formDangKy.get('hoTen').touched)
+                "
+                class="text-danger mt-1 small p-1 text-left"
+              >
+                <div *ngIf="formDangKy.get('hoTen').errors.required">
+                  * Họ và Tên Không được bỏ trống
+                </div>
+              </div>
+            </div>
+
+            <div class="sign__group">
+              <input
+                type="text"
+                class="sign__input"
+                placeholder="Email"
+                formControlName="email"
+              />
+              <div
+                *ngIf="
+                  formDangKy.get('email').invalid &&
+                  (formDangKy.get('email').dirty ||
+                    formDangKy.get('email').touched)
+                "
+                class="text-danger mt-1 small p-1 text-left"
+              >
+                <div *ngIf="formDangKy.get('email').errors.required">
+                  * Email Không được bỏ trống
+                </div>
+                <div *ngIf="formDangKy.get('email').errors.pattern">
+                  * Email Không hợp lệ!
+                </div>
+              </div>
+            </div>
+
+            <div class="sign__group">
+              <input
+                type="text"
+                class="sign__input"
+                placeholder="Số điện thoại"
+                formControlName="soDt"
+              />
+              <div
+                *ngIf="
+                  formDangKy.get('soDt').invalid &&
+                  (formDangKy.get('soDt').dirty ||
+                    formDangKy.get('soDt').touched)
+                "
+                class="text-danger mt-1 small p-1 text-left"
+              >
+                <div *ngIf="formDangKy.get('soDt').errors.pattern">
+                  * Số Điện Thoại Không hợp lệ!
+                </div>
+              </div>
+            </div>
+
+            <button class="sign__btn" type="submit">Sign up</button>
+          </form>
+          <!-- registration form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

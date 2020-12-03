@@ -1,0 +1,67 @@
+.footer {
+    background-color: #28282d;
+    color: whitesmoke;
+    padding-top: 35px;
+   
+  
+    .links {
+      
+      ul {
+        list-style-type: none;
+        
+      }
+      li a {
+        font-size: 15px;
+        color: whitesmoke;
+        transition: color 0.3s;
+        &:hover {
+          text-decoration: none;
+            color: #ff55a5;
+        }
+        img {
+          width: 18px;
+          height: 18px;
+          &:hover{
+              width: 19px;
+              height: 19px;
+          }
+        }
+        i,
+        img {
+          margin: 10px 15px;
+        }
+        i {
+          color: #0067fe;
+          font-size: 18px;
+        }
+        
+      }
+    }
+    .about-company {
+      i {
+        font-size: 25px;
+      }
+      a {
+        color: whitesmoke;
+        transition: color 0.3s;
+        
+      }
+    }
+    .location {
+      p {
+        color: whitesmoke;
+      }
+      i {
+        font-size: 18px;
+        width: 30px;
+        color:whitesmoke;
+      }
+      .location-item {
+        margin: 5px 0;
+      }
+    }
+    .copyright p {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+  

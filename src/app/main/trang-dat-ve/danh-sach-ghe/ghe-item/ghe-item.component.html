@@ -1,0 +1,11 @@
+<div
+  (click)="datGhe()"
+  class="ghe"
+  [ngClass]="{
+    gheVip: gheItem.loaiGhe === 'Vip',
+    dangDat: isDatGhe,
+    'ghe-selected': gheItem.daDat
+  }"
+>
+  <p>{{ gheItem.tenGhe }}</p>
+</div>

@@ -1,0 +1,153 @@
+.header{
+    .UserName{
+        align-self: center;
+        font-weight: 550;
+        color: whitesmoke;
+    }
+    position: fixed;
+    top: 0%;
+    z-index: 200;
+    width: 100%;
+    background-color: hsla(211, 30%, 19%, 0.7);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: 0.5s all;
+    padding: 0 10%;
+    color: whitesmoke;
+    &:hover{
+        background-color:  #22303f;     
+    }
+    &.noneHide{
+        overflow: visible;
+    }
+    a{
+        color: whitesmoke;
+        transition: all 0.5s;
+    }
+    i{
+        color: whitesmoke;
+    }
+
+    .navbar--config{
+        .navbar-toggler--config {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 30px;
+            &.hide i {
+              transform: rotateX(180deg);
+              left: 47%;
+            }
+      
+          }
+          .navbar-nav{
+            .nav-item {
+                .nav-link {
+                  transition: 0.4s all;
+                  font-weight: 400;
+                  &:hover {
+                    color: #ff55a5;
+                  }
+                  &.active{
+                    color: #ff55a5;
+                    border-bottom: 1px solid #ff55a5;
+                  }
+                }
+              }
+          }
+    }
+}
+
+img{
+    width: 150px;
+}
+
+.navbar__right{
+    position: relative;
+    .btn-dangNhap{
+        background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 30px;
+        width: 135px;
+        font-weight: 550;
+        height: 30px;
+        display: inline-block;
+        border-radius: 3px;
+        font-size: 14px;
+        cursor: pointer;
+        opacity: 0.9;
+        transition: all 0.5s;
+        &:hover{
+            opacity: 1;
+            box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
+        }
+    }
+
+    .helloUser{
+        padding: 0 15px;
+        cursor: pointer;
+        .UserName-img{
+            position: relative;
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            .UserInfo{
+                cursor: pointer;
+                position: absolute;
+                top: 75%;
+                right:-262%;
+                transition: all 0.5s;
+                overflow: hidden;
+                color: #000;
+                text-align: center;
+                width: 250px;
+                height: 0;
+                transition:all .5;
+                .arrow-up {
+                height: 16px;
+                img {
+                    width: 15px;
+                    height: 10px;
+                }
+                }
+                .UserInfo__content {
+                    background-image: linear-gradient(
+                      to bottom,
+                      rgb(255, 255, 255),
+                      rgb(212, 212, 212)
+                    );
+                    border: 1.5px solid rgba(163, 163, 163, 0.781);
+                    width: 100%;
+                    box-shadow: 1px 1px 7px 2px #0000002e;
+                    .inFo {
+                      padding: 10px 0 5px 0;
+                      border-bottom: 1.5px solid rgba(163, 163, 163, 0.781);
+                    }
+                    .logOut {
+                      padding: 5px 0 10px 0;
+                    }
+                    .inFo,
+                    .logOut {
+                      
+                      &:hover {
+                        background-color: #ff55a5;
+                        p{
+                          color: white;
+                        }
+                        border-left: 5px solid #ff5860;
+                        font-weight: 550;
+                      }
+                    }
+                  }
+                }
+                .activeUserInfo {
+                  height: 100px;
+                }
+              }
+              
+            }
+            }
+   

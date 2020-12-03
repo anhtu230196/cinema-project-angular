@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./home/home.component";
 import { MovieDetailComponent } from "./movie-detail/movie-detail.component";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { PipeModule } from "../pipe/pipe.module";
@@ -21,6 +22,16 @@ import { LichChieuRapComponent } from "./home/he-thong-rap/lich-chieu-rap/lich-c
 import { LichChieuPhimComponent } from "./home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/lich-chieu-phim.component";
 import { GioXemComponent } from "./home/he-thong-rap/lich-chieu-rap/lich-chieu-phim/gio-xem/gio-xem.component";
 import { TrangDatVeComponent } from "./trang-dat-ve/trang-dat-ve.component";
+import { TrangDangNhapComponent } from "./home/trang-dang-nhap/trang-dang-nhap.component";
+import { TrangDangKyComponent } from "./home/trang-dang-ky/trang-dang-ky.component";
+import { UngDungComponent } from "./home/ung-dung/ung-dung.component";
+import { CarouselComponent } from "./home/carousel/carousel.component";
+import { ChiTietInfoComponent } from "./movie-detail/chi-tiet-info/chi-tiet-info.component";
+import { ChiTietRapComponent } from "./movie-detail/chi-tiet-rap/chi-tiet-rap.component";
+import { ModalWarningComponent } from "./home/modal/modal-warning/modal-warning.component";
+import { ChiTietRateComponent } from "./movie-detail/chi-tiet-rate/chi-tiet-rate.component";
+import { DanhSachGheComponent } from "./trang-dat-ve/danh-sach-ghe/danh-sach-ghe.component";
+import { GheItemComponent } from "./trang-dat-ve/danh-sach-ghe/ghe-item/ghe-item.component";
 
 const routes: Routes = [
   {
@@ -29,8 +40,9 @@ const routes: Routes = [
     // Khi xài children, thì file html phải có router-outlet
     children: [
       { path: "", component: HomeComponent },
-      { path: "movie/:id", component: MovieDetailComponent },
+      { path: "chitiet/:id", component: MovieDetailComponent },
       { path: "datve/:maLichChieu", component: TrangDatVeComponent },
+      { path: "dangky", component: TrangDangKyComponent },
     ],
   },
 ];
@@ -54,11 +66,23 @@ const routes: Routes = [
     LichChieuPhimComponent,
     GioXemComponent,
     TrangDatVeComponent,
+    TrangDangNhapComponent,
+    TrangDangKyComponent,
+    UngDungComponent,
+    CarouselComponent,
+    ChiTietInfoComponent,
+    ChiTietRapComponent,
+    ModalWarningComponent,
+    ChiTietRateComponent,
+    DanhSachGheComponent,
+    GheItemComponent,
   ],
   imports: [
     CommonModule,
     PipeModule,
     SlickCarouselModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(routes),
   ],
 })
