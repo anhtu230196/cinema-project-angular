@@ -32,10 +32,6 @@ export class HeaderComponent implements OnInit {
     this.isInfo = false;
   }
 
-  thongTinUser() {
-    this.isInfo = false;
-  }
-
   showLogin() {
     //Ẩn hiện khi click vào đăng nhập
     this.isLogin = !this.isLogin;
