@@ -32,7 +32,6 @@ import { ModalWarningComponent } from "./home/modal/modal-warning/modal-warning.
 import { ChiTietRateComponent } from "./movie-detail/chi-tiet-rate/chi-tiet-rate.component";
 import { DanhSachGheComponent } from "./trang-dat-ve/danh-sach-ghe/danh-sach-ghe.component";
 import { GheItemComponent } from "./trang-dat-ve/danh-sach-ghe/ghe-item/ghe-item.component";
-import { UserInfoComponent } from './user-info/user-info.component';
 
 const routes: Routes = [
   {
@@ -77,7 +76,6 @@ const routes: Routes = [
     ChiTietRateComponent,
     DanhSachGheComponent,
     GheItemComponent,
-    UserInfoComponent,
   ],
   imports: [
     CommonModule,
