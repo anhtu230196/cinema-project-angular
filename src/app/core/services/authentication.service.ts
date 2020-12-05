@@ -51,4 +51,12 @@ export class AuthenticationService {
       this.currentAdminSubject.next(null);
     }
   }
+
+  capNhap(values): Observable<any> {
+    const url =
+      "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
+    return this.http
+      .put(url, values)
+      .pipe(tap((res) => this.currentUserSubject.next(res)));
+  }
 }

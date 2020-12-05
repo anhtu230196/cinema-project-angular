@@ -51,10 +51,22 @@ export class ChiTietRapComponent implements OnInit, OnChanges {
     this.chiTietRap.forEach((rapItem) => {
       if (rapItem.maHeThongRap === value) {
         this.lichChieu = []; //Reset lại mảng lichChieu khi chọn rạp khác
-        this.maRap = rapItem.maHeThongRap; //Thay đổi hệ thống rạp
+        this.maRap = rapItem.maHeThongRap; //Thay đổi active hệ thống rạp
         this.cumRapChieu = rapItem.cumRapChieu; //Thay đổi mảng cụm rap chiếu theo rạp
         this.lichChieu = this.cumRapChieu[0].lichChieuPhim; //Lịch chiếu thể hiện phần tử đầu tiên của mảng
         this.setNgayChieu(); //set lại ngày giờ chiếu
+      }
+    });
+  }
+
+  changeLichChieu(value) {
+    //Thay đổi lịch chiếu khi thay đổi cụm rạp
+    this.cumRapChieu.forEach((cumItem) => {
+      console.log("cumItem", cumItem);
+      if (cumItem.maCumRap === value) {
+        this.lichChieu = []; //Xét lại lịch chiếu bằng rỗng để xóa những lịch chiếu trước
+        this.lichChieu = cumItem.lichChieuPhim;
+        this.setNgayChieu();
       }
     });
   }
@@ -74,21 +86,10 @@ export class ChiTietRapComponent implements OnInit, OnChanges {
   }
 
   setGioChieu(value) {
+    //Giờ chiếu sẽ lấy mảng lichChieuPhim có thuộc tính như dưới để lấy giá trị maLichChieu và gọi api
     this.gioChieu = this.lichChieu.filter(
       (item) => item.ngayChieuGioChieu.split("T")[0] == value
     ); //Lọc giờ chiếu theo ngày
-  }
-
-  changeLichChieu(value) {
-    //Thay đổi lịch chiếu khi thay đổi cụm rạp
-    this.cumRapChieu.forEach((cumItem) => {
-      console.log("cumItem", cumItem);
-      if (cumItem.maCumRap === value) {
-        this.lichChieu = []; //Xét lại lịch chiếu bằng rỗng để xóa những lịch chiếu trước
-        this.lichChieu = cumItem.lichChieuPhim;
-        this.setNgayChieu();
-      }
-    });
   }
 
   changeTime(value) {
