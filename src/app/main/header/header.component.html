@@ -25,7 +25,7 @@
         <li class="nav-item" (click)="changeActive('khoPhim')">
           <a
             class="nav-link"
-            [routerLink]="['/khoPhim']"
+            [routerLink]="['/']"
             [ngClass]="{ active: active == 'khoPhim' }"
             >Kho Phim</a
           >
@@ -63,11 +63,11 @@
                 <img src="assets/img/togglle.png" alt="" />
               </div>
               <div class="UserInfo__content">
-                <!-- <div class="inFo">
+                <div class="inFo">
                   <p (click)="thongTinUser()" routerLink="/thongTin">
                     Thông Tin Người Dùng
                   </p>
-                </div> -->
+                </div>
                 <div class="logOut">
                   <p (click)="logOut()">Đăng Xuất</p>
                 </div>

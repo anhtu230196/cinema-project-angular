@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Ghe } from "../models/ghe";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   // Từ angular 6, các service đã được gắn vào root
@@ -10,7 +10,15 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class GheService {
+  private lichDatVeSubject = new BehaviorSubject("");
+  lichDatVe = this.lichDatVeSubject.asObservable();
+
   constructor(private http: HttpClient) {}
+
+  getLichDatVe(value) {
+    //value là chuỗi xác nhận thông tin ở trang thông tin người dùng để active "thông tin", "đổi mật khẩu", "xem lịch sử đặt vé"
+    this.lichDatVeSubject.next(value);
+  }
 
   layDanhSachPhongVe(maLichChieu: number): Observable<any> {
     const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`;

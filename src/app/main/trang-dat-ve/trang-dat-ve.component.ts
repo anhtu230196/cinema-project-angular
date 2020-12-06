@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
 import { GheService } from "src/app/core/services/ghe.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-trang-dat-ve",
@@ -117,6 +118,7 @@ export class TrangDatVeComponent implements OnInit {
   }
 
   datVe() {
+    Swal.fire("Any fool can use a computer");
     let xacNhan = confirm("Xác nhận đặt vé ?");
     if (!xacNhan) {
       return;

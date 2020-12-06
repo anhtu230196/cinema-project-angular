@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   active: string;
   isLogin: boolean = false;
   isToggle: boolean = false;
-  isInfo: boolean = false;
+  isInfo: boolean = false; //Tắt component đăng nhập
   currentUser: any = {};
 
   toggle() {
@@ -29,6 +29,10 @@ export class HeaderComponent implements OnInit {
   constructor(private auth: AuthenticationService) {}
 
   changeActive(value: string) {
+    this.isInfo = false;
+  }
+
+  thongTinUser() {
     this.isInfo = false;
   }
 

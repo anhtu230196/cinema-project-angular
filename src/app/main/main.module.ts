@@ -5,6 +5,8 @@ import { MovieDetailComponent } from "./movie-detail/movie-detail.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { SlickCarouselModule } from "ngx-slick-carousel";
+import { MatPaginatorModule } from "@angular/material/paginator";
+
 import { PipeModule } from "../pipe/pipe.module";
 import { RouterModule, Routes } from "@angular/router";
 import { LayoutComponent } from "./layout/layout.component";
@@ -44,6 +46,7 @@ const routes: Routes = [
       { path: "chitiet/:id", component: MovieDetailComponent },
       { path: "datve/:maLichChieu", component: TrangDatVeComponent },
       { path: "dangky", component: TrangDangKyComponent },
+      { path: "thongTin", component: UserInfoComponent },
     ],
   },
 ];
@@ -86,6 +89,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild(routes),
+    MatPaginatorModule,
   ],
 })
 export class MainModule {}

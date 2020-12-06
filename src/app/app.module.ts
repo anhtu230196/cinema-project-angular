@@ -12,6 +12,7 @@ import { AppComponent } from "./app.component";
 import { SlickCarouselModule } from "ngx-slick-carousel";
 
 import { RouterModule, Routes } from "@angular/router";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
     HttpClientModule,
     SlickCarouselModule,
     PipeModule,
+    BrowserAnimationsModule,
   ],
   // Nơi gắn các services vào
   providers: [],

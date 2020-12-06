@@ -48,6 +48,12 @@ export class UserInfoComponent implements OnInit {
     });
   }
 
+  onSelectFile(image) {}
+
+  changeMethod(value) {
+    this.method = value;
+  }
+
   capNhapMatKhau(value) {
     this.formUpdatePass.markAllAsTouched();
     if (this.formUpdatePass.invalid) {
@@ -102,5 +108,30 @@ export class UserInfoComponent implements OnInit {
       };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ghe.lichDatVe.subscribe((res) => {
+      if (res) {
+        this.method = res;
+      } else {
+        this.method = "thongTin";
+      }
+    });
+
+    let user: any = {};
+    this.auth.currentUser.subscribe((res) => {
+      user = res;
+      if (!user.taiKhoan) {
+        this.router.navigate(["/"]);
+      } else {
+        this.user.layThongTinUser(user.taiKhoan).subscribe((res) => {
+          this.currentUser = res;
+          this.thongTinDatVe = res.thongTinDatVe;
+          this.formUpdate.setValue({
+            hoTen: this.currentUser.hoTen,
+            soDt: this.currentUser.soDt,
+          });
+        });
+      }
+    });
+  }
 }

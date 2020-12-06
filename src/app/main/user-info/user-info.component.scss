@@ -1,0 +1,253 @@
+.user-info {
+  // height: 1000px;
+  margin-top: 76px;
+  padding: 100px 0;
+  transition: all 0.5s;
+  max-width: 1160px;
+
+  .user-info--content {
+    margin-top: -40px;
+    border: 1px solid rgba(59, 59, 59, 0.452);
+    padding: 50px 40px 20px 40px;
+    background-color: rgba(59, 59, 59, 0.452);
+    transition: all 0.5s;
+    // height: 760px;
+    
+  }
+  .user-info-left {
+    // margin-top: 20px;
+    text-align: center;
+    padding: 0 80px;
+    margin-top: 30px;
+    
+    .user-avatar {
+      
+      .avatar {
+        // @include for-size(sm){
+        //   max-width: 50%;
+        //   // flex: 0 0 50%;
+        // }
+        label {
+          position: relative;
+          cursor: pointer;
+          i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+          }
+          .bgc-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.473);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.5s;
+            
+          }
+          &:hover .bgc-label,
+          &:hover i {
+            opacity: 1;
+          }
+          img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            z-index: 0;
+          }
+        }
+      }
+      .avatar-upload {
+        #fileInput {
+          display: none;
+        }
+      }
+    }
+    .user-name {
+      padding: 15px 0;
+      font-size: 25px;
+      font-weight: 550;
+      border-bottom: solid 1px rgb(194, 194, 194);
+    }
+    .user-info-method {
+      
+
+      p.method-item {
+        color: rgb(95, 95, 95);
+        cursor: pointer;
+        padding: 10px 0;
+        position: relative;
+        transition: all 0.3s;
+        
+        &.active {
+          color: #fb4226;
+          font-size: 18px;
+        }
+        &:after {
+          content: "";
+          background-color: #ff55a5;
+          position: absolute;
+          bottom: 10%;
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0;
+          height: 1px;
+          width: 50%;
+          transition: all 0.5s;
+          
+        }
+        &.active:after {
+          opacity: 1;
+        }
+        &:hover:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .user-info-right {
+    h1 {
+      color: rgb(88, 88, 88);
+      
+    }
+    
+    text-align: center;
+    .user-info__content,
+    .change-pass__content,
+    .lichsu-datve__content {
+      .lichSuVe-title {
+        margin-bottom: 30px;
+      }
+      .info__content,
+      .pass-content {
+        .info-item {
+          position: relative;
+          text-align: left;
+          label {
+            font-weight: 550;
+            font-size: 18px;
+            margin-top: 30px;
+            
+          }
+          input {
+            width: 100%;
+            padding: 5px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ff55a5;
+            color: whitesmoke;
+            // margin-left: 10px;
+            &.disabled {
+              color: rgb(153, 153, 153);
+              border-bottom: 1px solid rgb(153, 153, 153);
+            }
+          }
+        }
+      }
+      .capNhap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .button-capNhap {
+          text-align: center;
+          color: whitesmoke;
+          margin: 2em;
+          height: 50px;
+          width: 140px;
+          border-radius: 4px;
+          background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+          box-shadow: 0 0 20px 0 rgba(255,88,96,0.5);
+          opacity: 0.85;
+          &:hover{
+            opacity: 1;
+          }
+        }
+      }
+      
+    }
+  }
+}
+// .userInfo {
+//   color: white;
+//   .user-info--content {
+//     border: 1px solid rgba(255, 255, 255, 0.452);
+//     background-color: rgba(95, 95, 95, 0.158);
+//     .user-info-left {
+//       .user-name {
+//         border-bottom: solid 1px rgb(194, 194, 194);
+//       }
+//       .user-info-method {
+//         p.method-item {
+//           color: rgb(194, 194, 194);
+//           &.active {
+//             color: #fb4226ff;
+//           }
+//           &:after {
+//             content: "";
+//             background-color: #00c6d7;
+//           }
+//         }
+//       }
+//     }
+//     .user-info-right {
+//       h1 {
+//         color: rgb(182, 182, 182);
+//       }
+//       text-align: center;
+//       .user-info__content,
+//       .change-pass__content,
+//       .lichsu-datve__content {
+//         .lichSuVe-title {
+//           margin-bottom: 30px;
+//         }
+//         .info__content,
+//         .pass-content {
+//           .info-item {
+//             input {
+//               border-bottom: 1px solid #00c6d7;
+//               color: #eee;
+//               &.disabled {
+//                 color: rgb(153, 153, 153);
+//                 border-bottom: 1px solid rgb(153, 153, 153);
+//               }
+//             }
+//           }
+//         }
+//         .info__content {
+//           label {
+       
+//           }
+//         }
+//         .button-capNhat {
+//           input[type="submit"] {
+//             color: #ffffff;
+//             border: 3px solid rgba(255, 255, 255, 0.43);
+//             background-color: #02737e4d;
+//             box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.71);
+//             &:hover {
+//               color: #ffffff;
+//               border-color: #00c6d7;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+.inputPass{
+  + label{
+    position: absolute;
+    top: 30px;
+    right: 3%;
+    opacity: .5;
+    &.showPass{
+      opacity: 1;
+    }
+  }
+ 
+}

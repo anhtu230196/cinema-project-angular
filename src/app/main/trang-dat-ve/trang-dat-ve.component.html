@@ -57,15 +57,19 @@
                 <div class="row">
                   <div class="col-12 d-flex bap-nuoc">
                     <p class="giaVe__left">Bắp Nước:</p>
-                    <p class="giaVe__right">{{ tienCombo }}</p>
+                    <p class="giaVe__right">
+                      {{ tienCombo | currency: "VND" }}
+                    </p>
                   </div>
                   <div class="col-12 d-flex bap-nuoc">
                     <p class="giaVe__left">Vé:</p>
-                    <p class="giaVe__right">{{ tienVe }}</p>
+                    <p class="giaVe__right">{{ tienVe | currency: "VND" }}</p>
                   </div>
                   <div class="col-12 tongTien d-flex">
                     <p class="giaVe__left">Tổng Tiền:</p>
-                    <p class="giaVe__right">{{ tienVe + tienCombo }}</p>
+                    <p class="giaVe__right">
+                      {{ tienVe + tienCombo | currency: "VND" }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -124,7 +128,7 @@
         </div>
         <div class="combo-text col-5">
           <p>{{ combo.ten }}</p>
-          <p>{{ combo.gia }}</p>
+          <p>{{ combo.gia | currency: "VND" }}</p>
         </div>
         <div class="combo-sl col-4 d-flex mx-auto">
           <div (click)="datCombo(combo.id, false)" class="minus text-center">
@@ -142,7 +146,7 @@
       <div class="combo-line"></div>
       <div class="combo-footer">
         <span>Thành Tiền:</span>
-        <span>{{ tienCombo }}</span>
+        <span>{{ tienCombo | currency: "VND" }}</span>
       </div>
     </div>
   </table>
