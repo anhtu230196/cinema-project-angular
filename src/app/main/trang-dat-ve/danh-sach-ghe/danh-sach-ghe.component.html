@@ -5,7 +5,6 @@
   <div class="danhSach-ghe justify-content-center row">
     <div class="gheItem" *ngFor="let gheItem of danhSachGhe">
       <app-ghe-item
-        [isWarning]="isWarning"
         [gheItem]="gheItem"
         (getGhe)="sendTenGhe($event)"
       ></app-ghe-item>

@@ -8,11 +8,7 @@ import { CinemaService } from "../../../core/services/cinema.service";
 export class HeThongRapComponent implements OnInit, OnChanges {
   dsHeThongRap: [] = [];
   maHeThong: string = "";
-  currentWindowWidth: number;
-  @HostListener("window:resize")
-  onResize() {
-    this.currentWindowWidth = window.innerWidth;
-  }
+
   indexActive: number = 0;
   changeIndex(index) {
     this.indexActive = index;
@@ -26,10 +22,6 @@ export class HeThongRapComponent implements OnInit, OnChanges {
 
   //ngOnInIt chỉ chạy 1 lần sau khi khởi động component
   ngOnInit(): void {
-    this.currentWindowWidth = window.innerWidth;
-    if (this.currentWindowWidth <= 420) {
-      this.maHeThong = null; // Nếu màn hình nhỏ thì ko sét hệ thống rạp ban đầu
-    }
     this.cinemaService.layThongTinHeThongRap().subscribe(
       (res) => {
         this.maHeThong = res[0].maHeThongRap; // Sét hệ thống rạp ban đầu khi trình duyệt khởi động

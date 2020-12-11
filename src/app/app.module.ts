@@ -2,7 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
-import { HttpClientModule } from "@angular/common/http";
+import { AuthInterceptor } from "./core/guard/auth.interceptor";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { PipeModule } from "./pipe/pipe.module";
 import { AppComponent } from "./app.component";
 // Có nhiều loại module
@@ -12,7 +13,7 @@ import { AppComponent } from "./app.component";
 import { SlickCarouselModule } from "ngx-slick-carousel";
 
 import { RouterModule, Routes } from "@angular/router";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 const routes: Routes = [
   {
@@ -42,7 +43,9 @@ const routes: Routes = [
     BrowserAnimationsModule,
   ],
   // Nơi gắn các services vào
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   // Khai báo để AppComponent là component chạy đầu tiên của module
   bootstrap: [AppComponent],
 })

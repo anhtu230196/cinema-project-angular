@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
   styleUrls: ["./ghe-item.component.scss"],
 })
 export class GheItemComponent implements OnInit {
-  @Input() isWarning: boolean;
   @Input() gheItem;
   @Output() getGhe = new EventEmitter();
   isDatGhe: boolean = false;

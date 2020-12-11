@@ -4,7 +4,6 @@
       <div class="thongTinGhe" [ngClass]="{ 'hide-ghe': isThanhToan }">
         <div class="dat-ve-left">
           <app-danh-sach-ghe
-            [isWarning]="isWarning"
             (getGhe)="datGhe($event)"
             *ngIf="danhSachGhe"
             [danhSachGhe]="danhSachGhe"

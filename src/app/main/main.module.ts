@@ -4,6 +4,8 @@ import { HomeComponent } from "./home/home.component";
 import { MovieDetailComponent } from "./movie-detail/movie-detail.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
+import { AuthGuard } from "../core/guard/auth.guard";
+
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { MatPaginatorModule } from "@angular/material/paginator";
 
@@ -44,7 +46,11 @@ const routes: Routes = [
     children: [
       { path: "", component: HomeComponent },
       { path: "chitiet/:id", component: MovieDetailComponent },
-      { path: "datve/:maLichChieu", component: TrangDatVeComponent },
+      {
+        path: "datve/:maLichChieu",
+        component: TrangDatVeComponent,
+        canActivate: [AuthGuard],
+      },
       { path: "dangky", component: TrangDangKyComponent },
       { path: "thongTin", component: UserInfoComponent },
     ],

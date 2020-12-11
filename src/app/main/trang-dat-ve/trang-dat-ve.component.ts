@@ -51,21 +51,6 @@ export class TrangDatVeComponent implements OnInit {
     },
   ];
 
-  @HostListener("window:resize")
-  onResize() {
-    this.currentWidth = window.innerWidth;
-    this.currentHeight = window.innerHeight;
-    if (this.currentWidth > 420) {
-      // màn lớn hươn 420 --> hiển thị button mua vé , hide button đặt ghế
-      this.isThanhToan = true;
-      this.isConfirm = true;
-    } else {
-      // màn nhỏ hươn 420 --> hiển thị button đặt ghế , hide button mua vé
-      this.isThanhToan = false;
-      this.isConfirm = false;
-    }
-  }
-
   constructor(
     public router: Router,
     private auth: AuthenticationService,
@@ -103,8 +88,9 @@ export class TrangDatVeComponent implements OnInit {
   }
 
   datGhe(ghe) {
+    const { maGhe, giaVe } = ghe;
     if (ghe.daDat) {
-      this.gheDangChon.push(ghe);
+      this.gheDangChon.push({ maGhe, giaVe });
       this.gheDangChon.sort((a, b) => a.tenGhe - b.tenGhe);
     } else {
       let index = this.gheDangChon.findIndex(
@@ -115,10 +101,10 @@ export class TrangDatVeComponent implements OnInit {
     this.tienVe = this.gheDangChon.reduce((tienVe, gheItem, index) => {
       return (tienVe += gheItem.giaVe);
     }, 0);
+    console.log(this.gheDangChon);
   }
 
   datVe() {
-    Swal.fire("Any fool can use a computer");
     let xacNhan = confirm("Xác nhận đặt vé ?");
     if (!xacNhan) {
       return;
@@ -131,8 +117,17 @@ export class TrangDatVeComponent implements OnInit {
         };
         this.ghe.datVe(this.mangDatVe).subscribe({
           next: (res) => {
-            this.router.navigate(["/"]);
             alert("Đặt vé thành công");
+            let xacNhan = confirm("Tiếp tục đặt vé?");
+            if (xacNhan) {
+              location.reload();
+            } else {
+              this.ghe.getLichDatVe("lichSuVe");
+              this.router.navigate(["/thongtin"]);
+            }
+          },
+          error: (err) => {
+            console.log(err);
           },
         });
       }
@@ -144,17 +139,9 @@ export class TrangDatVeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentHeight = window.innerHeight;
-    this.currentWidth = window.innerWidth;
-    if (this.currentWidth > 420) {
-      this.isThanhToan = true;
-      this.isConfirm = true;
-    } else {
-      this.isThanhToan = false;
-      this.isConfirm = false;
-    }
     this.auth.currentUser.subscribe({
       next: (data) => {
+        console.log(data);
         if (data) {
           this.currentUser = data;
         }

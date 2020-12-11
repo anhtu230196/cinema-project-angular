@@ -7,12 +7,7 @@
         [ngClass]="{ active: index == indexActive }"
         (click)="layMaCumRap(thongTinRap.maCumRap); changeIndex(index)"
       >
-        <div
-          class="d-flex"
-          (click)="showCumRap()"
-          data-toggle="collapse"
-          [attr.data-target]="'#' + thongTinRap.maCumRap"
-        >
+        <div class="d-flex" (click)="showCumRap()">
           <img src="assets/img/rap-demo.jpg" alt="" />
           <div class="item__title ml-2">
             <span class="tenRap">
@@ -22,7 +17,7 @@
             <p class="dsRap-diaChi small">{{ thongTinRap.diaChi }}</p>
           </div>
         </div>
-        <div
+        <!-- <div
           *ngIf="currentWindowWidth <= 420"
           class="lich-chieu__phim-item collapse"
           [id]="thongTinRap.maCumRap"
@@ -32,15 +27,12 @@
             [maCumRap]="thongTinRap.maCumRap"
           >
           </app-lich-chieu-phim>
-        </div>
+        </div> -->
       </li>
     </ul>
     <div class="line"></div>
   </div>
-  <div
-    *ngIf="currentWindowWidth > 420"
-    class="col-lg-7 col-md-6 lich-chieu__phim"
-  >
+  <div class="col-lg-7 col-md-6 lich-chieu__phim">
     <app-lich-chieu-phim
       *ngIf="maCumRap"
       [maRap]="maHeThong"

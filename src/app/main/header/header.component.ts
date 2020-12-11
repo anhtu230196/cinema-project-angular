@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
+import { UserService } from "src/app/core/services/user.service";
 
 @Component({
   selector: "app-header",
@@ -21,12 +22,13 @@ export class HeaderComponent implements OnInit {
   isToggle: boolean = false;
   isInfo: boolean = false; //Tắt component đăng nhập
   currentUser: any = {};
+  url: any;
 
   toggle() {
     this.isToggle = !this.isToggle;
   }
 
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService, private user: UserService) {}
 
   changeActive(value: string) {
     this.isInfo = false;
@@ -49,5 +51,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.currentUser.subscribe((res) => (this.currentUser = res));
+    this.user.avatarUser.subscribe((res) => {
+      this.url = res;
+    });
   }
 }

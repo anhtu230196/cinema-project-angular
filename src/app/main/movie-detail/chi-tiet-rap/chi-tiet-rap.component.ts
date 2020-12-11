@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostListener,
-  Input,
-  OnChanges,
-  OnInit,
-} from "@angular/core";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
 
@@ -25,11 +19,6 @@ export class ChiTietRapComponent implements OnInit, OnChanges {
   indexActive = 0; //Active rạp đầu tiên
   ngayActive = 0;
   currentUser: any = {};
-  currentWindowWidth: number;
-  @HostListener("window: resize")
-  onResize() {
-    this.currentWindowWidth = window.innerWidth;
-  }
 
   changeCumRapIndex(index) {
     //active cụm rạp đc chọn
@@ -101,14 +90,12 @@ export class ChiTietRapComponent implements OnInit, OnChanges {
       this.router.navigate([`/datve/${maLichChieu}`]);
     } else {
       alert("Vui lòng đăng nhập");
-      this.router.navigate(["/"]);
     }
   }
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   ngOnInit(): void {
-    this.currentWindowWidth = window.innerWidth;
     this.maRap = this.chiTietRap[0].maheThongRap; //Chọn hệ thống active lần đầu
     this.lichChieu = this.cumRapChieu[0].lichChieuPhim;
     this.setNgayChieu();

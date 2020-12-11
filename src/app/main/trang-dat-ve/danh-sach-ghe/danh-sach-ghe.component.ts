@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
   styleUrls: ["./danh-sach-ghe.component.scss"],
 })
 export class DanhSachGheComponent implements OnInit {
-  @Input() isWarning: boolean;
   @Input() danhSachGhe: [];
   @Output() getGhe = new EventEmitter();
 

@@ -48,7 +48,16 @@ export class UserInfoComponent implements OnInit {
     });
   }
 
-  onSelectFile(image) {}
+  onSelectFile(event) {
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event) => {
+      this.url = event.target.result;
+      const imgUser = { taiKhoan: this.currentUser.taiKhoan, img: this.url };
+      localStorage.setItem(this.currentUser.taiKhoan, JSON.stringify(imgUser));
+      this.user.updateAvatarUser(imgUser);
+    };
+  }
 
   changeMethod(value) {
     this.method = value;
@@ -78,11 +87,11 @@ export class UserInfoComponent implements OnInit {
       };
       this.auth.capNhap(userUpdate).subscribe(
         (res) => {
-          Swal.fire("", "Cập nhập mật khẩu thành công", "success");
+          alert("Cập nhập mật khẩu thành công");
           this.formUpdatePass.reset();
         },
         (err) => {
-          Swal.fire("", `${err.error}`, "warning");
+          alert(err.error);
         }
       );
     }
@@ -100,16 +109,20 @@ export class UserInfoComponent implements OnInit {
     };
     this.auth
       .capNhap(userUpdate)
-      .subscribe((res) =>
-        Swal.fire("", "Cập nhập thông tin thành công", "success")
-      ),
+      .subscribe((res) => alert("Cập nhập thông tin thành công")),
       (err) => {
-        Swal.fire("", `${err.error}`, "warning");
+        alert(err.error);
       };
   }
 
   ngOnInit(): void {
+    this.user.avatarUser.subscribe((res) => {
+      console.log(res);
+      this.url = res;
+    });
+
     this.ghe.lichDatVe.subscribe((res) => {
+      //res="lichSuVe"
       if (res) {
         this.method = res;
       } else {

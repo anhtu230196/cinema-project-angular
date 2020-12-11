@@ -57,7 +57,7 @@
           (mouseleave)="isInfo = false"
         >
           <div class="UserName-img">
-            <img src="assets/img/avatar.png" alt="" />
+            <img [src]="url ? url.img : 'assets/img/avatar.png'" alt="" />
             <div class="UserInfo" [ngClass]="{ activeUserInfo: isInfo }">
               <div class="arrow-up">
                 <img src="assets/img/togglle.png" alt="" />

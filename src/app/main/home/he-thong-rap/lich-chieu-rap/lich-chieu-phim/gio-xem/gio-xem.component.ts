@@ -16,7 +16,7 @@ export class GioXemComponent implements OnInit {
     if (this.currentUser.taiKhoan) {
       this.router.navigate([`/datve/${value}`]);
     } else {
-      alert("Vui long đăng nhập");
+      alert("Vui lòng đăng nhập");
       return;
     }
   }

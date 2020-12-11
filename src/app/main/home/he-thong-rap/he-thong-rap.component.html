@@ -7,33 +7,18 @@
       <div
         class="col-md-2 col-sm-4 rap__item"
         *ngFor="let heThong of dsHeThongRap; let index = index"
-        [attr.data-id]="index"
         [ngClass]="{ active: index == indexActive }"
         (click)="layMaHeThong(heThong.maHeThongRap); changeIndex(index)"
       >
         <div class="bg-item">
-          <div
-            class="img-logo"
-            data-toggle="collapse"
-            [attr.data-target]="'#b' + index"
-          >
+          <div class="img-logo">
             <img [src]="heThong.logo" alt="" />
             <p>{{ heThong.tenHeThongRap }}</p>
-            <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-          </div>
-          <div
-            [id]="'b' + index"
-            *ngIf="currentWindowWidth <= 420"
-            class="collapse rap__lich-chieu-item"
-          >
-            <app-lich-chieu-rap
-              [maHeThong]="heThong.maHeThongRap"
-            ></app-lich-chieu-rap>
           </div>
         </div>
       </div>
     </div>
-    <div class="rap__lich-chieu" *ngIf="currentWindowWidth > 420">
+    <div class="rap__lich-chieu">
       <app-lich-chieu-rap [maHeThong]="maHeThong"></app-lich-chieu-rap>
     </div>
   </div>
