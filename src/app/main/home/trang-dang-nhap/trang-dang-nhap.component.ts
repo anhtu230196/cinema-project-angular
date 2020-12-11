@@ -29,12 +29,14 @@ export class TrangDangNhapComponent implements OnInit {
     if (this.formDangNhap.invalid) {
       return;
     }
-    this.auth.dangNhap(this.formDangNhap.value).subscribe((res) => {
-      localStorage.setItem("userInfo", JSON.stringify(res));
-    }),
-      (err) => {
-        this.errors = err;
-      };
+    this.auth.dangNhap(this.formDangNhap.value).subscribe({
+      next: (res) => {
+        localStorage.setItem("userInfo", JSON.stringify(res));
+      },
+      error: (err) => {
+        this.errors = err.error;
+      },
+    });
   }
 
   ngOnInit(): void {}

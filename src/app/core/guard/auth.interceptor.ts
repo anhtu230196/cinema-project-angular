@@ -30,6 +30,6 @@ export class AuthInterceptor implements HttpInterceptor {
         headers: request.headers.set("Authorization", `Bearer ${accessToken}`),
       });
     }
-    return next.handle(request);
+    return next.handle(requestClone);
   }
 }

@@ -88,9 +88,12 @@ export class TrangDatVeComponent implements OnInit {
   }
 
   datGhe(ghe) {
-    const { maGhe, giaVe } = ghe;
+    const gheInfo = {
+      maGhe: ghe.maGhe,
+      giaVe: ghe.giaVe,
+    };
     if (ghe.daDat) {
-      this.gheDangChon.push({ maGhe, giaVe });
+      this.gheDangChon.push(gheInfo);
       this.gheDangChon.sort((a, b) => a.tenGhe - b.tenGhe);
     } else {
       let index = this.gheDangChon.findIndex(

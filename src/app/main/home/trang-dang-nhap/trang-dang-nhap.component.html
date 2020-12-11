@@ -3,7 +3,7 @@
     <div class="arrow-up"></div>
   </div>
   <div class="dang-nhap__body">
-    <div class="small error" *ngIf="errors">{{ errors.error }}</div>
+    <div class="small error" *ngIf="errors">{{ errors }}</div>
     <form class="mx-auto" [formGroup]="formDangNhap" (ngSubmit)="dangNhap()">
       <div class="form-group">
         <label>Tài Khoản</label>
