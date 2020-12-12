@@ -28,6 +28,6 @@ export class GheService {
 
   datVe(value: any): Observable<any> {
     const url = "https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe";
-    return this.http.post(url, value);
+    return this.http.post(url, value, { responseType: "text" });
   }
 }

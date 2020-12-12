@@ -52,7 +52,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       { path: "dangky", component: TrangDangKyComponent },
-      { path: "thongTin", component: UserInfoComponent },
+      { path: "thongtin", component: UserInfoComponent },
     ],
   },
 ];
