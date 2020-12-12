@@ -16,21 +16,14 @@ import Swal from "sweetalert2";
   styleUrls: ["./trang-dat-ve.component.scss"],
 })
 export class TrangDatVeComponent implements OnInit {
-  @ViewChild("openmodal") openModal: ElementRef;
-
   danhSachGhe: any[];
   thongTinPhim: any;
   gheDangChon: any[] = [];
   tienVe: number = 0;
   tienCombo: number = 0;
   isCombo: boolean = false; //show-hide combo
-  isWarning: boolean; // show-hide warning
-  isThanhToan: boolean = false; // show-hide button mua vé (ở màn đt)
-  isConfirm: boolean; // show hide button đặt ghế (ở màn đt)
   mangDatVe: any = {};
-  leftTime: number = 300; // Thời gian count down
-  currentWidth: number;
-  currentHeight: number;
+
   currentUser: any;
   mangCombo: any[] = [
     {
@@ -109,9 +102,7 @@ export class TrangDatVeComponent implements OnInit {
 
   datVe() {
     let xacNhan = confirm("Xác nhận đặt vé ?");
-    if (!xacNhan) {
-      return;
-    } else {
+    if (xacNhan) {
       if (this.currentUser.taiKhoan) {
         this.mangDatVe = {
           maLichChieu: this.thongTinPhim.maLichChieu,
@@ -121,8 +112,8 @@ export class TrangDatVeComponent implements OnInit {
         this.ghe.datVe(this.mangDatVe).subscribe({
           next: (res) => {
             alert("Đặt vé thành công");
-            let xacNhan = confirm("Tiếp tục đặt vé?");
-            if (xacNhan) {
+            let xacNhanTiepTuc = confirm("Tiếp tục đặt vé?");
+            if (xacNhanTiepTuc) {
               location.reload();
             } else {
               this.ghe.getLichDatVe("lichSuVe");
@@ -134,17 +125,14 @@ export class TrangDatVeComponent implements OnInit {
           },
         });
       }
+    } else {
+      return;
     }
-  }
-
-  datVeBuoc1() {
-    this.isConfirm = true;
   }
 
   ngOnInit(): void {
     this.auth.currentUser.subscribe({
       next: (data) => {
-        console.log(data);
         if (data) {
           this.currentUser = data;
         }

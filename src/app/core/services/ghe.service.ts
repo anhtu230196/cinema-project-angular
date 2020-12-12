@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Ghe } from "../models/ghe";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 
 @Injectable({
   // Từ angular 6, các service đã được gắn vào root

@@ -1,7 +1,7 @@
 <div id="dat-ve">
   <div class="trang-datVe mx-auto">
     <div class="d-md-flex d-sm-block">
-      <div class="thongTinGhe" [ngClass]="{ 'hide-ghe': isThanhToan }">
+      <div class="thongTinGhe">
         <div class="dat-ve-left">
           <app-danh-sach-ghe
             (getGhe)="datGhe($event)"
@@ -13,7 +13,7 @@
 
       <div class="thongTinPhim ml-auto" *ngIf="thongTinPhim">
         <div class="dat-ve-right">
-          <div class="ve__info-phim d-flex col-md-12" *ngIf="isThanhToan">
+          <div class="ve__info-phim d-flex col-md-12">
             <img [src]="thongTinPhim.hinhAnh" alt="" />
             <div class="img-border">
               <img src="assets/img/border.png" alt="" />
@@ -28,10 +28,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="ve__info-rap d-flex ml-auto col-md-12"
-            [ngClass]="{ rapBuoc1: !isThanhToan }"
-          >
+          <div class="ve__info-rap d-flex ml-auto col-md-12">
             <img src="assets/img/rap-demo.jpg" alt="" />
             <div class="veRap-info">
               <p class="info-title">{{ thongTinPhim.tenCumRap }}</p>
@@ -49,10 +46,7 @@
 
           <div class="ve__giaVe col-12">
             <div class="row d-md-block d-flex d-lg-flex">
-              <div
-                class="col-lg-7 col-md-12 col-6 giaVe-bap"
-                *ngIf="isThanhToan"
-              >
+              <div class="col-lg-7 col-md-12 col-6 giaVe-bap">
                 <div class="row">
                   <div class="col-12 d-flex bap-nuoc">
                     <p class="giaVe__left">Bắp Nước:</p>
@@ -75,30 +69,18 @@
             </div>
           </div>
 
-          <div
-            class="button-ve text-center py-2"
-            *ngIf="isConfirm && isThanhToan; else buoc1"
-            (click)="datVe()"
-            data-toggle="modal"
-            data-target="#modalConfirm"
-            [ngClass]="{ active: gheDangChon[0] && !isWarning }"
-          >
-            Mua Vé
-          </div>
-          <ng-template #buoc1>
+          <div>
             <div
               class="button-ve text-center py-2"
               (click)="datVe()"
-              [ngClass]="{ active: gheDangChon[0] && !isWarning }"
+              [ngClass]="{ active: gheDangChon.length > 0 }"
             >
               Đặt ghế
-              <i *ngIf="isConfirm" class="mx-2 fa fa-spinner fa-spin"></i>
             </div>
-          </ng-template>
+          </div>
 
           <img
             src="assets/img/comboIcon.png"
-            *ngIf="isThanhToan"
             class="btn-combo"
             [ngClass]="{ 'show-combo': isCombo }"
             (click)="combo()"
@@ -111,10 +93,10 @@
 </div>
 <div [ngClass]="{ 'show-background': isCombo }" class="background-drop"></div>
 <div class="bg-combo" [ngClass]="{ 'show-combo': isCombo }">
-  <table class="table" [ngClass]="{ 'table-phone': currentHeight <= 375 }">
+  <table class="table">
     <div class="col-12 combo-content">
       <div (click)="closeCombo()" class="button-close">
-        <i class="fa fa-times-circle-o 2x" aria-hidden="true"></i>
+        <i class="fa fa-times"></i>
       </div>
 
       <h1 class="combo-heading">Combo</h1>
@@ -126,7 +108,7 @@
           <img [src]="combo.img" alt="" />
         </div>
         <div class="combo-text col-5">
-          <p>{{ combo.ten }}</p>
+          <p>{{ combo.ten | currency: "VND" }}</p>
           <p>{{ combo.gia | currency: "VND" }}</p>
         </div>
         <div class="combo-sl col-4 d-flex mx-auto">
@@ -141,7 +123,6 @@
           </div>
         </div>
       </div>
-      <hr />
       <div class="combo-line"></div>
       <div class="combo-footer">
         <span>Thành Tiền:</span>
